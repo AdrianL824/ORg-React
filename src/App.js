@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./components/Header/Header";
+import Formulario from "./components/Formulario/Formulario";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       {/* <Header></Header> 
       {}<Header()  */}
       <Header />
+      <Formulario />
     </div>
   );
 }
