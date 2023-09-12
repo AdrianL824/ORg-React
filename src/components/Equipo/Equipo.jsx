@@ -1,3 +1,4 @@
+import Colaborador from "../Colaborador/Colaborador";
 import "./Equipo.css";
 
 const Equipo = (props) => {
@@ -10,7 +11,12 @@ const Equipo = (props) => {
   return (
     <section className="equipo" style={secundario}>
       <h3 style={primario}>{titulo}</h3>
-      <div className="colaboradores"></div>
+      <div className="colaboradores">
+        <Colaborador />
+        <Colaborador />
+        <Colaborador />
+        <Colaborador />
+      </div>
     </section>
   );
 };
