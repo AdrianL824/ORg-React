@@ -4,10 +4,18 @@ import Header from "./components/Header/Header";
 import Formulario from "./components/Formulario/Formulario";
 import MiOrg from "./components/MiOrg/MiOrg";
 import Equipo from "./components/Equipo/Equipo";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false);
-  const [colaboradores, actualizarColaboradores] = useState([]);
+  const [colaboradores, actualizarColaboradores] = useState([
+    {
+      equipo: "Front End",
+      foto: "https://github.com/harlandlohora.png",
+      nombre: "Harland Lohora",
+      puesto: "Instructor",
+    },
+  ]);
 
   const cambiarMostrar = () => {
     actualizarMostrar(!mostrarFormulario);
@@ -56,13 +64,16 @@ function App() {
       {/* <Header></Header> 
       {}<Header()  */}
       <Header />
+
       {mostrarFormulario && (
         <Formulario
           equipos={equipos.map((equipo) => equipo.titulo)}
           registrarColaborador={registrarColaborador}
         />
       )}
+
       <MiOrg cambiarMostrar={cambiarMostrar} />
+
       {equipos.map((equipo) => (
         <Equipo
           datos={equipo}
@@ -72,6 +83,8 @@ function App() {
           )}
         />
       ))}
+
+      <Footer />
     </div>
   );
 }
