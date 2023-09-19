@@ -15,6 +15,30 @@ function App() {
       nombre: "Harland Lohora",
       puesto: "Instructor",
     },
+    {
+      equipo: "Programación",
+      foto: "https://github.com/genesysrm.png",
+      nombre: "Genesys Rondon",
+      puesto: "Desarrolladora de software e instructora",
+    },
+    {
+      equipo: "UX y Diseño",
+      foto: "https://github.com/JeanmarieAluraLatam.png",
+      nombre: "Jeanmarie Quijada",
+      puesto: "Instructora en Alura Latam",
+    },
+    {
+      equipo: "Programación",
+      foto: "https://github.com/christianpva.png",
+      nombre: "Christian Velasco",
+      puesto: "Head de Alura e Instructor",
+    },
+    {
+      equipo: "Innovación y Gestión",
+      foto: "https://github.com/JoseDarioGonzalezCha.png",
+      nombre: "Jose Gonzalez",
+      puesto: "Dev FullStack",
+    },
   ]);
 
   const cambiarMostrar = () => {
@@ -23,11 +47,18 @@ function App() {
   // Ternario --> condition ? seMuestra : noSeMuestra --> Metodo para desaparecer y aparecer componentes
   // Otro metodo --> condicion && seMuestra --> Metodo para desaparecer y aparecer componentes
 
+  // Registro de colaboradores
   const registrarColaborador = (colaborador) => {
     console.log("nuevo colaboradr", colaborador);
     //Spread operator
     actualizarColaboradores([...colaboradores, colaborador]);
   };
+
+  // Eliminar Colaborador
+  const eliminarColaborador = () => {
+    console.log("Colaborador eliminado");
+  };
+
   //Lista de equipos
   const equipos = [
     {
@@ -81,6 +112,7 @@ function App() {
           colaboradores={colaboradores.filter(
             (colaborador) => colaborador.equipo === equipo.titulo
           )}
+          eliminarColaborador={eliminarColaborador}
         />
       ))}
 
