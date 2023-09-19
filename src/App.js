@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false);
+  // Colaboradores
   const [colaboradores, actualizarColaboradores] = useState([
     {
       equipo: "Front End",
@@ -40,27 +41,8 @@ function App() {
       puesto: "Dev FullStack",
     },
   ]);
-
-  const cambiarMostrar = () => {
-    actualizarMostrar(!mostrarFormulario);
-  };
-  // Ternario --> condition ? seMuestra : noSeMuestra --> Metodo para desaparecer y aparecer componentes
-  // Otro metodo --> condicion && seMuestra --> Metodo para desaparecer y aparecer componentes
-
-  // Registro de colaboradores
-  const registrarColaborador = (colaborador) => {
-    console.log("nuevo colaboradr", colaborador);
-    //Spread operator
-    actualizarColaboradores([...colaboradores, colaborador]);
-  };
-
-  // Eliminar Colaborador
-  const eliminarColaborador = () => {
-    console.log("Colaborador eliminado");
-  };
-
-  //Lista de equipos
-  const equipos = [
+  // Equipos
+  const [equipos, actualizarEquipos] = useState([
     {
       titulo: "Programación",
       colorPrimario: "#57C278",
@@ -88,7 +70,37 @@ function App() {
       colorPrimario: "#FF8A29",
       colorSecundario: "#FFEEDF",
     },
-  ];
+  ]);
+
+  const cambiarMostrar = () => {
+    actualizarMostrar(!mostrarFormulario);
+  };
+  // Ternario --> condition ? seMuestra : noSeMuestra --> Metodo para desaparecer y aparecer componentes
+  // Otro metodo --> condicion && seMuestra --> Metodo para desaparecer y aparecer componentes
+
+  // Registro de colaboradores
+  const registrarColaborador = (colaborador) => {
+    console.log("nuevo colaboradr", colaborador);
+    //Spread operator
+    actualizarColaboradores([...colaboradores, colaborador]);
+  };
+
+  // Eliminar Colaborador
+  const eliminarColaborador = () => {
+    console.log("Colaborador eliminado");
+  };
+
+  //Actualizar Color
+  const actualizarColor = (color, titulo) => {
+    //console.log("El color actualizado es: ", color, titulo);
+    const equiposActualizados = equipos.map((equipo) => {
+      if (equipo.titulo === titulo) {
+        equipo.colorPrimario = color;
+      }
+      return equipo;
+    });
+    actualizarEquipos(equiposActualizados);
+  };
 
   return (
     <div className="App">
@@ -113,6 +125,7 @@ function App() {
             (colaborador) => colaborador.equipo === equipo.titulo
           )}
           eliminarColaborador={eliminarColaborador}
+          actualizarColor={actualizarColor}
         />
       ))}
 
