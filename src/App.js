@@ -8,7 +8,7 @@ import Equipo from "./components/Equipo/Equipo";
 import Footer from "./components/Footer/Footer";
 
 function App() {
-  const [mostrarFormulario, actualizarMostrar] = useState(true);
+  const [mostrarFormulario, actualizarMostrar] = useState(false);
   // Colaboradores
   const [colaboradores, actualizarColaboradores] = useState([
     {
