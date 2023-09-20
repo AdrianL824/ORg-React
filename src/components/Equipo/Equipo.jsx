@@ -4,22 +4,22 @@ import hexToRgba from "hex-to-rgba";
 
 const Equipo = (props) => {
   //Destructuracion
-  const { colorPrimario, colorSecundario, titulo } = props.datos;
+  const { colorPrimario, titulo, id } = props.datos;
   const { colaboradores, eliminarColaborador, actualizarColor } = props;
 
-  const secundario = { backgroundColor: hexToRgba(colorPrimario, 0.6) };
+  const obj = { backgroundColor: hexToRgba(colorPrimario, 0.6) };
   const primario = { borderColor: colorPrimario };
   //console.log(colaboradores.length > 0);
 
   return (
     colaboradores.length > 0 && (
-      <section className="equipo" style={secundario}>
+      <section className="equipo" style={obj}>
         <input
           className="input-color"
           type="color"
-          value={hexToRgba(colorPrimario, 0.6)}
+          value={colorPrimario}
           onChange={(e) => {
-            actualizarColor(e.target.value, titulo);
+            actualizarColor(e.target.value, id);
           }}
         />
         <h3 style={primario}>{titulo}</h3>
