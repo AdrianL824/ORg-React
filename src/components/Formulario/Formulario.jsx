@@ -5,12 +5,16 @@ import ListaOpciones from "../ListaOpciones/ListaOpciones";
 import Boton from "../Boton/Boton";
 
 const Formulario = (props) => {
+  // Formulario Registrar colaborador
   const [nombre, setNombre] = useState("");
   const [puesto, setPuesto] = useState("");
   const [foto, setFoto] = useState("");
   const [equipo, setEquipo] = useState("");
+  //Formulario Registrar Equipo
+  const [titulo, setTitulo] = useState("");
+  const [color, setColor] = useState("");
 
-  const { registrarColaborador } = props;
+  const { registrarColaborador, crearEquipo } = props;
 
   const manejarEnvio = (e) => {
     e.preventDefault();
@@ -22,6 +26,16 @@ const Formulario = (props) => {
       equipo,
     };
     registrarColaborador(datos);
+  };
+
+  const manejarNuevoEquipo = (e) => {
+    e.preventDefault();
+    console.log("Enviando", titulo, color);
+    let datosEquipo = {
+      titulo,
+      colorPrimario: color,
+    };
+    crearEquipo(datosEquipo);
   };
 
   return (
@@ -55,6 +69,24 @@ const Formulario = (props) => {
           equipos={props.equipos}
         />
         <Boton>Crear</Boton>
+      </form>
+      <form onSubmit={manejarNuevoEquipo}>
+        <h2>Rellena el formulario para crear el equipo.</h2>
+        <CampoTexto
+          titulo="Titulo"
+          placeholder="Ingresar titulo"
+          required
+          valor={titulo}
+          setValor={setTitulo}
+        />
+        <CampoTexto
+          titulo="Color"
+          placeholder="Ingresar color"
+          required
+          valor={color}
+          setValor={setColor}
+        />
+        <Boton>Registrar equipo</Boton>
       </form>
     </section>
   );

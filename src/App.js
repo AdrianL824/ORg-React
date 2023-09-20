@@ -8,7 +8,7 @@ import Equipo from "./components/Equipo/Equipo";
 import Footer from "./components/Footer/Footer";
 
 function App() {
-  const [mostrarFormulario, actualizarMostrar] = useState(false);
+  const [mostrarFormulario, actualizarMostrar] = useState(true);
   // Colaboradores
   const [colaboradores, actualizarColaboradores] = useState([
     {
@@ -127,6 +127,12 @@ function App() {
     actualizarEquipos(equiposActualizados);
   };
 
+  //Crear Equipo
+  const crearEquipo = (nuevoEquipo) => {
+    console.log(nuevoEquipo);
+    actualizarEquipos([...equipos, { ...nuevoEquipo, id: uuid() }]);
+  };
+
   return (
     <div className="App">
       {/* <Header></Header> 
@@ -137,6 +143,7 @@ function App() {
         <Formulario
           equipos={equipos.map((equipo) => equipo.titulo)}
           registrarColaborador={registrarColaborador}
+          crearEquipo={crearEquipo}
         />
       )}
 
